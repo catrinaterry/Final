@@ -1,0 +1,238 @@
+---
+title: "Final Exam"
+author: "Catrina Terry"
+date: 12/12/20
+output: pdf_document
+---
+
+
+
+
+
+### What does it mean to do reproducible research? Why is reproducibility important to the process of science? (5 pts)
+
+
+Reproducible research is when you can get the same results no matter the user analyzing the data. Any user can take the data, computational steps, methods, code and analysis and get the result and be able to replicate these results. Reproducibility is important to science because scientist across gradients can gain insight on a question without needing the manpower or funds to each reproduce this question. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+###  Using the data on red wine quality, develop a predictive model of red wine quality. Format the model in a way that it works well with the `predict` function in `R`. You will be assessed on the model structure mostly, but 5 of the 10 points will be on if the model can outperform a naive baseline (10 pts)
+
+
+
+```{r}
+
+dat <- read.csv('redWineTrain.csv')
+
+###models
+qtot<-lm(quality ~ fixed.acidity+  citric.acid+ residual.sugar+chlorides+free.sulfur.dioxide+total.sulfur.dioxide + pH +sulphates+alcohol,dat)
+##exclude non significant variables from models
+q1<-lm(quality ~ fixed.acidity+  citric.acid+ chlorides+free.sulfur.dioxide+total.sulfur.dioxide + pH +sulphates+alcohol,dat)
+q2<-lm(quality ~   citric.acid+ chlorides+free.sulfur.dioxide+total.sulfur.dioxide + pH +sulphates+alcohol,dat) ###all significant
+q3<-lm(quality ~  alcohol,dat) ###top  variables for simplicity sake
+
+plot(qtot)
+plot(q1)
+plot(q2)
+plot(q3)
+
+
+x1=range(dat$alcohol) ###8.4-14
+#x2=range(dat$sulphates) ###.33-1.95
+
+xalc <- seq(8,14, by=1)
+#sul <-seq(.3,2, by=0.1)
+
+yalc <- predict(q3, list(alcohol=alc), type="response") ###predict response of alcohol to quality of wine
+
+plot(dat$alcohol, dat$quality,pch=16, xlab="% alcohol", ylab = "Quality of Wine")
+lines(xalc,yalc) ###plot line of predicted values
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Pull data from an API of your choice (not Open Library), manipulate it in any way you choose, and create the most interesting and clear figure you can. (15 pts)
+
+(See https://rapidapi.com/blog/most-popular-api/ for a list of APIs)
+
+```{r}
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+### Use the R package `rgbif` to obtain occurrence data for a species of your choosing. Calculate the spatial distance between all occurrence points in a pair-wise fashion. (10 pts)
+
+
+
+```{r}
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Write an R function that removes each value of a vector, calculates the mean of the modified vector, and then reports the overall mean and standard deviation of those vector means. (5 pts)
+
+
+```{r}
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Choose a software license that is one you would feel comfortable using and defend it's use over other licenses (5 pts)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Which of the following softwares are you likely to use in the future? (0 pts)
+
++ R
++ git
++ R markdown
++ LaTeX
++ SQL
++ parallel computing packages
++ Docker
++ the tidyverse
++ a Linux OS
++ bash shell
+
+
+
+
+
+
+
+### What did you enjoy most about the course?
+
+
+
+
+
+
+
+
+
+
+
+
+### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
+
+
+
+
+
+
+
+
+
+
+
