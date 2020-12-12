@@ -244,7 +244,7 @@ Learning the tidyverse package and other useful programming knowledge
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
 
 
-There is no way "most" undergrads would be able to complete this course if it continues in this style. Too much of the work required for this class is not taught and the work is then not explained so there's no way to even know if you're doing things correctly. But this could be a great class if expectaitons were lower.
+There is no way "most" undergrads would be able to complete this course if it continues in this style. Too much of the work required for this class is not taught and the work is then not explained so there's no way to even know if you're doing things correctly. But this could be a great class if expectations were lower.
 
 
 
