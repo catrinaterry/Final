@@ -130,6 +130,12 @@ library(geosphere)
 wodu_distance<-distm(c(lon1, lat1), c(lon2, lat2), fun = distHaversine) # calculate distance between two points
 ##make for loop for all distances
 emptyvec <- c()
+
+f1 <- function(x) {
+  for(i in 1:nrow(wodu_distance))
+}
+  
+))
 ```
 
 
@@ -225,7 +231,7 @@ I would choose MIT license because right now it is the one I am most comfortable
 ### What did you enjoy most about the course?
 
 
-Learning the tidyverse package
+Learning the tidyverse package and other useful programming knowledge
 
 
 
