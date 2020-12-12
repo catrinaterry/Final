@@ -12,7 +12,7 @@ output: pdf_document
 ### What does it mean to do reproducible research? Why is reproducibility important to the process of science? (5 pts)
 
 
-Reproducible research is when you can get the same results no matter the user analyzing the data. Any user can take the data, computational steps, methods, code and analysis and get the result and be able to replicate these results. Reproducibility is important to science because scientist across gradients can gain insight on a question without needing the manpower or funds to each reproduce this question. 
+Reproducible research is when you can get the same results no matter the user analyzing the data. Any user can take the data, computational steps, methods, code and analysis and get the result and be able to replicate these results. Reproducibility is important to science because scientist across gradients can gain insight on a question without needing the manpower or funds to each reproduce this question. With this power we can gain more isngight and statistical prowess.
 
 
 
@@ -46,15 +46,15 @@ plot(q1)
 plot(q2)
 plot(q3)
 
-
+#make range of value
 x1=range(dat$alcohol) ###8.4-14
 #x2=range(dat$sulphates) ###.33-1.95
-
+#make range a seq
 xalc <- seq(8,14, by=1)
 #sul <-seq(.3,2, by=0.1)
 
-yalc <- predict(q3, list(alcohol=alc), type="response") ###predict response of alcohol to quality of wine
-
+yalc <- predict(q3, list(alcohol=xalc), type="response") ###predict response of alcohol to quality of wine
+###make predictive plot
 plot(dat$alcohol, dat$quality,pch=16, xlab="% alcohol", ylab = "Quality of Wine")
 lines(xalc,yalc) ###plot line of predicted values
 ```
@@ -82,11 +82,18 @@ lines(xalc,yalc) ###plot line of predicted values
 (See https://rapidapi.com/blog/most-popular-api/ for a list of APIs)
 
 ```{r}
-
-
-
-
-
+library(httr)
+library(jsonlite)
+library(tidyverse)
+#flight<- httr::GET('https://rapidapi.com/skyscanner/api/search.json?q=skyscanner')
+             
+ 
+ 
+flight <-httr::GET('https://rapidapi.com/blog/most-popular-api/search.json?q=skyscanner')
+str(flight)
+flightinfo <- jsonlite::fromJSON(content(flight,"text"),simplifyVector=FALSE)
+flightconnection<- length(sum(sapply(flightinfo[[2]], function(x) { x$connections }))) 
+plot(flightconnection)
 
 
 
@@ -111,10 +118,18 @@ lines(xalc,yalc) ###plot line of predicted values
 
 
 ```{r}
+###run into fatal error trying to install this  ¯\_(ツ)_/¯
+library(rgbif)
+wodu <- httr::GET('https://www.gbif.org/developer/species/Aix+ sponsa') #get wodu data
+str(wodu)
+woodduck <- rgbif::occ_search(scientificName = "Aix sponsa",
+limit = 500, return='data')[[3]] ###obtain occupancy data of wood ducks
+#calculate distance between points
+library(geosphere)
 
-
-
-
+wodu_distance<-distm(c(lon1, lat1), c(lon2, lat2), fun = distHaversine) # calculate distance between two points
+##make for loop for all distances
+emptyvec <- c()
 ```
 
 
@@ -139,9 +154,10 @@ lines(xalc,yalc) ###plot line of predicted values
 
 
 ```{r}
-
-
-
+x <- 1:50 #create vector
+x2 <- x[!x%in% 30:50] ###remove some values
+meanx2 <-mean(x2)
+sdx2 <-sd(x2)
 
 
 
@@ -171,10 +187,7 @@ lines(xalc,yalc) ###plot line of predicted values
 
 
 
-
-
-
-
+I would choose MIT license because right now it is the one I am most comfortable with because it's easy to use, I can share content but I can also be private about it. I can share with collaborators if needed but keep things closed if collaborators want to work on it privately. It seems a lot more simple than other licenses and its one of the more common so most people would be comfortable using it. Plus no liability on the orignal author
 
 
 
@@ -197,10 +210,6 @@ lines(xalc,yalc) ###plot line of predicted values
 + R
 + git
 + R markdown
-+ LaTeX
-+ SQL
-+ parallel computing packages
-+ Docker
 + the tidyverse
 + a Linux OS
 + bash shell
@@ -214,7 +223,7 @@ lines(xalc,yalc) ###plot line of predicted values
 ### What did you enjoy most about the course?
 
 
-
+Learning the tidyverse package
 
 
 
@@ -227,7 +236,7 @@ lines(xalc,yalc) ###plot line of predicted values
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
 
 
-
+There is no way "most" undergrads would be able to complete this course if it continues in this style. Too much of the work required for this class is not taught and the work is then not explained so there's no way to even know if you're doing things correctly. 
 
 
 
