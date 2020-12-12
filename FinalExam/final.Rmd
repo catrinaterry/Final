@@ -154,11 +154,13 @@ emptyvec <- c()
 
 
 ```{r}
-x <- 1:50 #create vector
-x2 <- x[!x%in% 30:50] ###remove some values
-meanx2 <-mean(x2)
-sdx2 <-sd(x2)
-
+getvect <- function(x) {
+  x1<- 1:50 #create vector
+  x2 <- x1[!x1%in% 30:50] ###remove some values
+  return(mean(x2))
+  return(mean(x1))
+  return(sd(x1))
+           }
 
 
 ```
@@ -236,7 +238,7 @@ Learning the tidyverse package
 ### What could be improved for future iterations (especially as it will be geared more exclusively towards undergraduates in the future)?
 
 
-There is no way "most" undergrads would be able to complete this course if it continues in this style. Too much of the work required for this class is not taught and the work is then not explained so there's no way to even know if you're doing things correctly. 
+There is no way "most" undergrads would be able to complete this course if it continues in this style. Too much of the work required for this class is not taught and the work is then not explained so there's no way to even know if you're doing things correctly. But this could be a great class if expectaitons were lower.
 
 
 
